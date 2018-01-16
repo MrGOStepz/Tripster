@@ -29,8 +29,8 @@ export class LoginPage {
       this.checkRemember = false;
     }
 
-    localStorage.setItem("email",''); 
-    localStorage.setItem("pw", ''); 
+    localStorage.setItem("email",'');
+    localStorage.setItem("pw", '');
     console.log('ionViewDidLoad LoginPage');
     var email = localStorage.getItem("email");
     var password = localStorage.getItem("pw");
@@ -48,35 +48,37 @@ export class LoginPage {
       subTitle:message,
       buttons:['OK']
     }).present();
-    
+
   }
 
-  
+
   ionViewDidLoad() {
 
   }
 
   login(user:User){
-    this.ofAuth.auth.signInWithEmailAndPassword(user.email,user.password)
-    .then(data =>{
-      console.log('got some data', data);
-              if(this.checkRemember){
-          localStorage.setItem("email",this.user.email); 
-          localStorage.setItem("pw", this.user.password); 
-          //localStorage.getItem("email");
-          }
-          else{
-            localStorage.setItem("email",''); 
-            localStorage.setItem("pw",''); 
-          }
-          this.alert('Login Success!');
-        this.navCtrl.setRoot(TabsPage);
-    })
-    .catch(error => {
-      console.log('got an error', error);
-      this.alert(error.message);
-    })
-    console.log('Would sign in with ', user.email,user.password);
+    this.ofAuth.auth.signInWithEmailAndPassword('jon@1.com','123456');
+    this.navCtrl.setRoot(TabsPage);
+    // this.ofAuth.auth.signInWithEmailAndPassword(user.email,user.password)
+    // .then(data =>{
+    //   console.log('got some data', data);
+    //           if(this.checkRemember){
+    //       localStorage.setItem("email",this.user.email);
+    //       localStorage.setItem("pw", this.user.password);
+    //       //localStorage.getItem("email");
+    //       }
+    //       else{
+    //         localStorage.setItem("email",'');
+    //         localStorage.setItem("pw",'');
+    //       }
+    //       this.alert('Login Success!');
+    //     this.navCtrl.setRoot(TabsPage);
+    // })
+    // .catch(error => {
+    //   console.log('got an error', error);
+    //   this.alert(error.message);
+    // })
+    // console.log('Would sign in with ', user.email,user.password);
   }
 
   register(){
@@ -85,9 +87,9 @@ export class LoginPage {
 
   rememberMe(){
     if(this.checkRemember == true){
-      localStorage.setItem("CheckStatus","true");   
+      localStorage.setItem("CheckStatus","true");
     }else{
-      localStorage.setItem("CheckStatus","false"); 
+      localStorage.setItem("CheckStatus","false");
     }
   }
 

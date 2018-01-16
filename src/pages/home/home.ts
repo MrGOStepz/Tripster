@@ -9,16 +9,20 @@ import { Profile } from '../../app/models/profile';
   templateUrl: 'home.html'
 })
 export class HomePage {
-
+  public event = {
+    timeStarts: new Date('dd MM yyyy'),
+  }
   profileData : FirebaseObjectObservable<Profile>;
 
   constructor(private ofAuth: AngularFireAuth,
-    private ofDatabase: AngularFireDatabase,
-    private toast: ToastController,
-    public navCtrl: NavController) {
+              private ofDatabase: AngularFireDatabase,
+              private toast: ToastController,
+              public navCtrl: NavController) {
       var a = ofAuth.auth.currentUser.email;
-
   }
+
+
+
 
   ionViewWillLoad(){
     this.ofAuth.authState.subscribe(data => {
