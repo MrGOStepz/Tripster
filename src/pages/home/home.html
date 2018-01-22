@@ -1,11 +1,66 @@
 <ion-header>
     <ion-navbar>
-        <ion-title>Home</ion-title>
+        <ion-title>Flgith Search</ion-title>
     </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-    <p>UserName {{(profileData | async)?.username}}</p>
+    <ion-card>
+        <ion-card-content>
+            <ion-list radio-group>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col>
+                            <ion-item>
+                                <ion-label>Return</ion-label>
+                                <ion-radio value="return" checked="true" (click)="DisableReturnDate()"></ion-radio>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col>
+                            <ion-item>
+                                <ion-label>One Way</ion-label>
+                                <ion-radio value="oneway" (click)="AbleReturnDate()"></ion-radio>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-list>
+
+
+            <ion-list>
+                <ion-item>
+
+
+                    <ion-input type="text" placeholder="Departing From" (click)="openFlightModal()"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" placeholder="Flying To" (click)="openFlightModal()"></ion-input>
+                </ion-item>
+            </ion-list>
+
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        <button ion-button (click)="openFlightModal()">Date</button>
+                    </ion-col>
+                    <ion-col>
+                        <button ion-button [disabled]="disabled" (click)="createCalendar()">Date</button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header>
+            Header
+        </ion-card-header>
+        <ion-card-content>
+            The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
+        </ion-card-content>
+    </ion-card>
+
+    <!-- <p>UserName {{(profileData | async)?.username}}</p>
     <p>First Name {{(profileData | async)?.firstName}}</p>
-    <p>Last Name {{(profileData | async)?.lastName}}</p>
+    <p>Last Name {{(profileData | async)?.lastName}}</p> -->
 </ion-content>

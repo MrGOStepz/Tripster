@@ -20,6 +20,12 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
 
 import { LoginPage } from '../pages/login/login';
 import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
+import { SearchFlightModalPage } from '../pages/search-flight-modal/search-flight-modal';
+
+import { Calendar } from '@ionic-native/calendar';
+import { AirportsProvider } from '../providers/airports/airports';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import 'rxjs/add/operator/map';
 
 @NgModule({
   declarations: [
@@ -29,7 +35,8 @@ import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
     ContactPage,
     HomePage,
     TabsPage,
-    ForgotPasswordPage
+    ForgotPasswordPage,
+    SearchFlightModalPage
 
   ],
   imports: [
@@ -37,7 +44,8 @@ import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -47,12 +55,16 @@ import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
     ContactPage,
     HomePage,
     TabsPage,
-    ForgotPasswordPage
+    ForgotPasswordPage,
+    SearchFlightModalPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Calendar,
+    AirportsProvider,
+    HttpClientModule
   ]
 })
 export class AppModule {}
