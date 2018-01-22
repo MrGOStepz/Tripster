@@ -1,10 +1,15 @@
 <ion-header>
     <ion-navbar>
+<<<<<<< HEAD
         <ion-title>Flgith Search</ion-title>
+=======
+        <ion-title>Search</ion-title>
+>>>>>>> 2d1acdad917023401da41bfc84ec71a0793481ae
     </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+<<<<<<< HEAD
     <ion-card>
         <ion-card-content>
             <ion-list radio-group>
@@ -64,3 +69,91 @@
     <p>First Name {{(profileData | async)?.firstName}}</p>
     <p>Last Name {{(profileData | async)?.lastName}}</p> -->
 </ion-content>
+=======
+
+  <ion-grid>
+    <ion-row>
+      <ion-list radio-group inline>
+        <ion-col col-16>
+          <ion-item class="remove-border">
+            <ion-label>One-way</ion-label>
+            <ion-radio checked="true" value="oneway"></ion-radio>
+          </ion-item>
+        </ion-col>
+        <ion-col col-6>
+          <ion-item class="remove-border">
+            <ion-label>Return</ion-label>
+            <ion-radio value="return"></ion-radio>
+          </ion-item>
+        </ion-col>
+      </ion-list>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        <ion-item>
+          <ion-label>From</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-6>
+        <ion-item>
+          <ion-label>To</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        <ion-item>
+          <ion-label>Start</ion-label>
+          <ion-datetime displayFormat="dd:MM:yyyy" pickerFormat="dd MM yyyy" [(ngModel)]="event.timeStarts"></ion-datetime>
+        </ion-item>
+      </ion-col>
+      <ion-col col-6>
+        <ion-item>
+          <ion-label>End</ion-label>
+          <ion-datetime displayFormat="dd:MM:yyyy" pickerFormat="dd MM yyyy" [(ngModel)]="event.timeStarts"></ion-datetime>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <ion-item>
+          <ion-label>Class</ion-label>
+          <ion-select [(ngModel)]="gender">
+            <ion-option value="economy">Economy</ion-option>
+            <ion-option value="premium-economy">Premium-economy</ion-option>
+            <ion-option value="business">Business</ion-option>
+            <ion-option value="first">First</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <!-- <ion-row>
+      <ion-col col-4>
+        <ion-item>
+          <ion-label>Adult</ion-label>
+          <ion-input type="number"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-4>
+        <ion-item>
+          <ion-label>Youth</ion-label>
+          <ion-input type="number"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-4>
+        <ion-item>
+          <ion-label>Child</ion-label>
+          <ion-input type="number"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row> -->
+    <ion-row>
+      <ion-col col-12>
+        <button ion-button full>Search</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+>>>>>>> 2d1acdad917023401da41bfc84ec71a0793481ae

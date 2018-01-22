@@ -1,4 +1,5 @@
 page-home {
+<<<<<<< HEAD
     #radio {
         display: flex;
         flex-direction: row;
@@ -9,4 +10,9 @@ page-home {
     .radioInline{
         display: inline-block;
     }
+=======
+  .remove-border .item-inner{
+    border: 0 !important;
+  }
+>>>>>>> 2d1acdad917023401da41bfc84ec71a0793481ae
 }

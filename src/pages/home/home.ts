@@ -13,10 +13,13 @@ import { SearchFlightModalPage }  from '../search-flight-modal/search-flight-mod
   templateUrl: 'home.html'
 })
 export class HomePage {
-
+  public event = {
+    timeStarts: new Date('dd MM yyyy'),
+  }
   profileData : FirebaseObjectObservable<Profile>;
   public disabled = false;
 
+<<<<<<< HEAD
   constructor(private modalCtrl : ModalController,
     private calendar: Calendar,
     private ofAuth: AngularFireAuth,
@@ -50,7 +53,17 @@ export class HomePage {
      console.log('Hello');
    });
    profileModal.present();
+=======
+  constructor(private ofAuth: AngularFireAuth,
+              private ofDatabase: AngularFireDatabase,
+              private toast: ToastController,
+              public navCtrl: NavController) {
+      var a = ofAuth.auth.currentUser.email;
+>>>>>>> 2d1acdad917023401da41bfc84ec71a0793481ae
   }
+
+
+
 
   ionViewWillLoad(){
     // this.ofAuth.authState.subscribe(data => {
