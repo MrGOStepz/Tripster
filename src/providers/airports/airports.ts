@@ -21,4 +21,9 @@ export class AirportsProvider {
        .map(response => response.json());
    }
 
+   getCities(){
+    return this.http.get('/assets/cities.json')
+       .map(response => response.json());
+   }
+
 }

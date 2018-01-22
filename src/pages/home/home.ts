@@ -5,29 +5,69 @@ import { AngularFireDatabase ,FirebaseObjectObservable } from 'angularfire2/data
 // import { AngularFireDatabase  } from 'angularfire2/database';
 import { Profile } from '../../app/models/profile';
 import { Calendar } from '@ionic-native/calendar';
+import { AirportDetail } from '../../app/models/airportDetail'
 
 import { SearchFlightModalPage }  from '../search-flight-modal/search-flight-modal';
+import { PassengerInformationModalPage } from '../passenger-information-modal/passenger-information-modal';
+import { DateModalPage } from '../date-modal/date-modal'
+import { PassengerDetail } from '../../app/models/passengerDetail';
+import { DateDetail, DepartDateDetail, ReturnDateDetail } from '../../app/models/dateDetail';
+import { GlobalVariableProvider } from '../../providers/global-variable/global-variable'
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  public event = {
-    timeStarts: new Date('dd MM yyyy'),
-  }
+
   profileData : FirebaseObjectObservable<Profile>;
   public disabled = false;
+  // public airportCodeDeparting:AirportDetail;
+  // public airportCodeFlyingTo:AirportDetail;
+  public airportCodeDeparting= [];
+  public airportCodeFlyingTo = [];
 
-<<<<<<< HEAD
-  constructor(private modalCtrl : ModalController,
+  public passengerDetail = {} as PassengerDetail;
+  public dateDetail = {} as DateDetail;
+
+  // public departingDate: String = new Date().toISOString();
+  // public returnDate: String = new Date().toISOString();
+  public departingDate= {} as DepartDateDetail;
+  public returnDate= {} as ReturnDateDetail;
+  public minDate:string
+  public maxDate:string;
+  airportName:string;
+  airportContry:string;
+
+  constructor(public globalVarialbe:GlobalVariableProvider,
+    private modalCtrl : ModalController,
     private calendar: Calendar,
     private ofAuth: AngularFireAuth,
     private ofDatabase: AngularFireDatabase,
     private toast: ToastController,
     public navCtrl: NavController) {
       // var a = ofAuth.auth.currentUser.email;
+      // this.airportCodeDeparting.code = "";
+      // this.airportCodeDeparting.name = "";
+      // this.airportCodeDeparting.country = "";
 
+      // this.airportCodeFlyingTo.code = "";
+      // this.airportCodeFlyingTo.name = "";
+      // this.airportCodeFlyingTo.country = "";
+
+this.minDate =  new Date().toISOString();
+this.maxDate = (new Date().getFullYear() +1).toString() ;
+
+this.departingDate.now = new Date().toISOString();
+this.returnDate.now = new Date().toISOString();
+
+      this.passengerDetail.audlts = 1;
+      this.passengerDetail.children = 0;
+      this.passengerDetail.infants = 0;
+      this.passengerDetail.class = "Economy";
+
+      this.globalVarialbe.loginLevel = "0";
+      
 
   }
 
@@ -47,23 +87,39 @@ export class HomePage {
     this.disabled = true;    
   }
 
-  openFlightModal(){
-    let profileModal = this.modalCtrl.create(SearchFlightModalPage, { userId: 8675309 });
-   profileModal.onDidDismiss(data => {
-     console.log('Hello');
+  openFlightModalDeparting(){
+    let searchFlightModal = this.modalCtrl.create(SearchFlightModalPage, { });
+    searchFlightModal.onDidDismiss((airportDetail) => {
+    this.airportCodeDeparting = airportDetail;
    });
-   profileModal.present();
-=======
-  constructor(private ofAuth: AngularFireAuth,
-              private ofDatabase: AngularFireDatabase,
-              private toast: ToastController,
-              public navCtrl: NavController) {
-      var a = ofAuth.auth.currentUser.email;
->>>>>>> 2d1acdad917023401da41bfc84ec71a0793481ae
+   searchFlightModal.present();
+  }
+
+  openFlightModalFlyingTo(){
+    let searchFlightModal = this.modalCtrl.create(SearchFlightModalPage, {  });
+    searchFlightModal.onDidDismiss((airportDetail) => {
+    this.airportCodeFlyingTo = airportDetail;
+   });
+   searchFlightModal.present();
+  }
+
+  openPassengerModal(){
+    let passengerModal = this.modalCtrl.create(PassengerInformationModalPage, { });
+    passengerModal.onDidDismiss((passengerDetails) => {
+     this.passengerDetail = passengerDetails;
+    });
+    passengerModal.present();
   }
 
 
 
+  openDateModal(){
+    let dateModal = this.modalCtrl.create(DateModalPage, { });
+    dateModal.onDidDismiss((dateDetails) => {
+     this.dateDetail = dateDetails;
+    });
+    dateModal.present();
+  }
 
   ionViewWillLoad(){
     // this.ofAuth.authState.subscribe(data => {

@@ -14,25 +14,46 @@
 
 
 <ion-content padding>
-    <ion-item>
-        <ion-label floating>Email Address</ion-label>
-        <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+    <div [class.hide]="checkLogin">
+        <ion-item>
+            <ion-label floating>Email Address</ion-label>
+            <ion-input type="text" [(ngModel)]="user.email"></ion-input>
 
-    </ion-item>
+        </ion-item>
 
-    <ion-item>
-        <ion-label floating>Password</ion-label>
-        <ion-input type="password" [(ngModel)]="user.password"></ion-input>
-    </ion-item>
-    <div id="topButtons">
-        <button ion-button (click)="login(user)">login</button>
-        <button ion-button color="light" (click)="register()">Register</button>
+        <ion-item>
+            <ion-label floating>Password</ion-label>
+            <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+        </ion-item>
+        <div id="topButtons">
+            <button ion-button (click)="login(user)">login</button>
+            <button ion-button color="light" (click)="register()">Register</button>
+        </div>
+
+        <div id="topButtons">
+            <ion-checkbox [(ngModel)]="checkRemember" (ionChange)="rememberMe()"></ion-checkbox>
+            <ion-label>Remember Password</ion-label>
+
+            <ion-label (click)='forgotPassword()'>Forgot Password</ion-label>
+        </div>
     </div>
 
-    <div id="topButtons">
-        <ion-checkbox [(ngModel)]="checkRemember" (ionChange)="rememberMe()"></ion-checkbox>
-        <ion-label>Remember Password</ion-label>
+    <div [class.hide]="!checkLogin">
+        <ion-item>
+            <ion-label>Username</ion-label>
+            <ion-input [(ngModel)]="profile.username" value="{{(profileData | async)?.username}}"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>First Name</ion-label>
+            <ion-input [(ngModel)]="profile.firstName" value="Haha"></ion-input>
+        </ion-item>
 
-        <ion-label (click)='forgotPassword()'>Forgot Password</ion-label>
+        <ion-item>
+            <ion-label>Last Name</ion-label>
+            <ion-input [(ngModel)]="profile.lastName"></ion-input>
+        </ion-item>
+
+        <button ion-button clear block (click)="updateProfile()">Update Profile</button>
+        <button ion-button full color="danger" (click)="logoutUser()">Logout</button>
     </div>
 </ion-content>
